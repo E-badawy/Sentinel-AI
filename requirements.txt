@@ -23,3 +23,5 @@ groq
 ddgs
 trafilatura
 python-docx
+google-analytics-data
+google-auth
