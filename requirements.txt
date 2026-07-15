@@ -12,3 +12,4 @@ python-multipart
 pydantic-settings
 psycopg2-binary
 sqlalchemy
+openai
