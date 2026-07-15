@@ -25,3 +25,4 @@ trafilatura
 python-docx
 google-analytics-data
 google-auth
+reportlab
