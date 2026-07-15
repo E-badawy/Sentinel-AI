@@ -1,3 +1,6 @@
+import os
+import json
+
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import (
     RunReportRequest,
@@ -12,9 +15,21 @@ class GA4Service:
 
     def __init__(self):
 
-        credentials = service_account.Credentials.from_service_account_file(
-            "credentials/ga4.json"
-        )
+        if os.getenv("GA4_CREDENTIALS"):
+
+            credentials_info = json.loads(
+                os.getenv("GA4_CREDENTIALS")
+            )
+
+            credentials = service_account.Credentials.from_service_account_info(
+                credentials_info
+            )
+
+        else:
+
+            credentials = service_account.Credentials.from_service_account_file(
+                "credentials/ga4.json"
+            )
 
         self.client = BetaAnalyticsDataClient(
             credentials=credentials
@@ -22,6 +37,7 @@ class GA4Service:
 
         # GA4 Property ID
         self.property_id = "514291784"
+
 
     def visitors_last_7_days(self):
 
@@ -47,10 +63,12 @@ class GA4Service:
 
         for row in response.rows:
 
-            results.append({
-                "country": row.dimension_values[0].value,
-                "users": row.metric_values[0].value
-            })
+            results.append(
+                {
+                    "country": row.dimension_values[0].value,
+                    "users": row.metric_values[0].value
+                }
+            )
 
         return results
 
