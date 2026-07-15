@@ -13,3 +13,13 @@ pydantic-settings
 psycopg2-binary
 sqlalchemy
 openai
+requests
+tavily-python
+pandas
+google-generativeai
+pymupdf
+loguru
+groq
+ddgs
+trafilatura
+python-docx
