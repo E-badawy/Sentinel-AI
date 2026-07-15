@@ -1,0 +1,11 @@
+fastapi 
+uvicorn 
+langchain 
+langgraph 
+langchain-core 
+httpx 
+python-dotenv 
+loguru 
+apscheduler 
+pydantic 
+python-multipart
